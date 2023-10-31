@@ -1,1 +1,17 @@
+/* google font */
 
+body {
+    width: 100vw;
+    height:100vh;
+}
+
+#gameBoard {
+    display:grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+    width: 300px;
+}
+
+.gameSquare {
+    border: 1px black solid;
+}
