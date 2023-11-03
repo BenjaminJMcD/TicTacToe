@@ -1,35 +1,36 @@
 
-// GAMEBOARD = ARRAY INSIDE GAMEBOARD OBJECT. IT IS ALSO A MODULE.
 
 function Gameboard () {
 
     // return GET BOARD
-    // return HANDLE CLICK
-    // return PRINT BOARD ----- METHODS
+    // return HANDLE CLICK --- ??????
 
-    const rows = 3;
-    const columns = 3;
     const board = [];
 
-    for (let i = 0; i < rows; i++) {
-        board[i] = [];
-        for (let j = 0; j < columns; j++) {
-          board[i].push(Cell());
-        }
+    for (let i = 0; i < 9; i++) {
+          board.push(Cell());
     }
 
+    // GET STATE OF BOARD AS ARRAY
     const getBoard = () => board;
 
-    const handleClick = (column, row, player) => {
+    // ASSIGN SQUARE/ARRAY WITH VALUE --- ???????
+    // const dropToken = (square, player) => {
 
-    }
+    //     const markedSquare = board[square].addToken(player);
+    // }
+
+    // PRINT TO CONSOLE DONT NEED AFTER UI
+    // const printBoard = () => {
+    // }
 
     const printBoard = () => {
+        const boardWithCellValues = board.map((cell) => cell.getValue());
 
+        console.log(boardWithCellValues)
     }
 
-    console.log(board)
-    return {getBoard, handleClick, printBoard}  
+    return {getBoard, printBoard}  
 }
 
 function Cell() {
@@ -44,7 +45,7 @@ function Cell() {
     return {addToken, getValue}
 }
 
-function Player() {
+function GameController() {
 
     const board = Gameboard();
 
@@ -59,8 +60,6 @@ function Player() {
         }
     ];
 
-    console.log(players[0].token)
-
     let activePlayer = players[0]
 
     const switchPlayer = () => {
@@ -69,28 +68,33 @@ function Player() {
 
     const getActivePlayer = () => activePlayer;
 
+ 
     const printNewRound = () => {
-        board.printBoard();
-        console.log(`${getActivePlayer().name}'s turn`)
+         board.printBoard();
+    //     console.log(`${getActivePlayer().name}'s turn`)
     };
 
-    const playRound = () => {
-        board.handleClick(getActivePlayer().token);
+    //const playRound = (square) => {
+        //board.dropToken(square, getActivePlayer().token);
 
-        switchPlayer();
-        printNewRound();
-    };
+        //GET SQUARE VALUE FROM CLICK HANDLER DATA
+        //PASS INTO DROPTOKEN
+
+        //RUN UPDATE SCREEN
+
+
+        //switchPlayer();
+        //printNewRound();
+    //};
 
     printNewRound();
 
     return {
-        playRound,
-        getActivePlayer
+        //playRound,
+        getActivePlayer,
     };
 
 };
-    
 
-Gameboard();
-Player();
+const game = GameController();
 
