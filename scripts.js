@@ -2,26 +2,18 @@
 
 function Gameboard () {
 
-    // return GET BOARD
-    // return HANDLE CLICK --- ??????
-
     const board = [];
 
     for (let i = 0; i < 9; i++) {
           board.push(Cell());
     }
 
-    // GET STATE OF BOARD AS ARRAY
     const getBoard = () => board;
 
-    // ASSIGN SQUARE/ARRAY WITH VALUE --- ???????
     const dropToken = (square, player) => {
 
         board[square].addToken(player);
     }
-
-    // PRINT TO CONSOLE DONT NEED AFTER UI
-
 
     const printBoard = () => {
         const boardWithCellValues = board.map((cell) => cell.getValue());
@@ -75,12 +67,6 @@ function GameController() {
     const playRound = (selection) => {
         board.dropToken(selection, getActivePlayer().token);
 
-        //GET SQUARE VALUE FROM CLICK HANDLER DATA
-        //PASS INTO DROPTOKEN
-
-        //RUN UPDATE SCREEN
-
-
         switchPlayer();
         printNewRound();
     };
@@ -112,7 +98,16 @@ function ScreenController() {
          const cellButton = document.createElement("button");
          cellButton.classList.add("gameSquare");
          cellButton.dataset.square = i;
-         cellButton.textContent = board[i];
+         //cellButton.textContent = board[i];
+         if (board[i] == 0) {
+            cellButton.textContent = "";
+         }
+         else if (board[i] == 1) {
+            cellButton.textContent = "X"
+         }
+         else if (board[i] == 2) {
+            cellButton.textContent = "O"
+         }
          gameBoard.appendChild(cellButton);
        }
   }
@@ -124,12 +119,6 @@ function ScreenController() {
         game.playRound(square);
 
         updateScreen();
-        
-        //console.log(square)
-        // GET SQUARE VALUE FROM DOM
-        // PASS INTO PLAYROUND
-        // RUN UPDATE SCREEN
-
 
     }
 
