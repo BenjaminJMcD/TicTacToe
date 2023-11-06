@@ -15,22 +15,21 @@ function Gameboard () {
     const getBoard = () => board;
 
     // ASSIGN SQUARE/ARRAY WITH VALUE --- ???????
-    // const dropToken = (square, player) => {
+    const dropToken = (square, player) => {
 
-    //     const markedSquare = board[square].addToken(player);
-    // }
+        board[square].addToken(player);
+    }
 
     // PRINT TO CONSOLE DONT NEED AFTER UI
-    // const printBoard = () => {
-    // }
+
 
     const printBoard = () => {
         const boardWithCellValues = board.map((cell) => cell.getValue());
 
-        console.log(boardWithCellValues)
+        return boardWithCellValues;
     }
 
-    return {getBoard, printBoard}  
+    return {getBoard, dropToken, printBoard}  
 }
 
 function Cell() {
@@ -71,11 +70,10 @@ function GameController() {
  
     const printNewRound = () => {
          board.printBoard();
-    //     console.log(`${getActivePlayer().name}'s turn`)
     };
 
-    //const playRound = (square) => {
-        //board.dropToken(square, getActivePlayer().token);
+    const playRound = (selection) => {
+        board.dropToken(selection, getActivePlayer().token);
 
         //GET SQUARE VALUE FROM CLICK HANDLER DATA
         //PASS INTO DROPTOKEN
@@ -83,18 +81,66 @@ function GameController() {
         //RUN UPDATE SCREEN
 
 
-        //switchPlayer();
-        //printNewRound();
-    //};
+        switchPlayer();
+        printNewRound();
+    };
 
     printNewRound();
 
     return {
-        //playRound,
+        playRound,
         getActivePlayer,
+        printBoard: board.printBoard
     };
 
 };
 
-const game = GameController();
+function ScreenController() {
 
+    const gameBoard = document.getElementById("gameBoard");
+    
+    const game = GameController();
+
+
+    const updateScreen = () => {
+        gameBoard.innerHTML = "";
+        const board = game.printBoard();
+        console.log(board);
+
+        for (i=0; i<board.length; i++) {
+
+         const cellButton = document.createElement("button");
+         cellButton.classList.add("gameSquare");
+         cellButton.dataset.square = i;
+         cellButton.textContent = board[i];
+         gameBoard.appendChild(cellButton);
+       }
+  }
+
+    const clickHandler = (e) => {
+
+        const square = e.target.dataset.square;
+
+        game.playRound(square);
+
+        updateScreen();
+        
+        //console.log(square)
+        // GET SQUARE VALUE FROM DOM
+        // PASS INTO PLAYROUND
+        // RUN UPDATE SCREEN
+
+
+    }
+
+    gameBoard.addEventListener("click", clickHandler);
+
+    updateScreen();
+
+    return {
+        clickHandler
+    }
+}
+
+
+ScreenController();
