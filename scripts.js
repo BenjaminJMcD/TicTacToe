@@ -116,15 +116,36 @@ function GameController() {
 
     // CHECK WIN FUNCTIONALITY
 
-    // const checkWin = () => {
+    const winningAxes = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6]
+    ]
 
-    // }
+    const checkWin = () => {
+        let boardStatus = board.printBoard();
+
+        winningAxes.forEach((index) => {
+            if (boardStatus[index[0]] === 1 && boardStatus[index[1]] === 1 && boardStatus[index[2]] === 1) {
+                console.log("PLAYER X WINS")
+            }
+            else if (boardStatus[index[0]] === 2 && boardStatus[index[1]] === 2 && boardStatus[index[2]] === 2) {
+                console.log("PLAYER O WINS")
+            }
+        })
+    }
 
     return {
         playRound,
         getActivePlayer,
         updateGameStatus,
         switchPlayer,
+        checkWin,
         printBoard: board.printBoard,
         resetBoard: board.resetBoard
     };
@@ -173,6 +194,7 @@ function ScreenController() {
         }
 
         updateScreen();
+        game.checkWin();
     }
 
     gameBoard.addEventListener("click", clickHandler);
