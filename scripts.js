@@ -2,18 +2,26 @@
 
 function Gameboard () {
 
+    // DECLARE BOARD ARRAY
     const board = [];
 
+    // INITIALIZE BOARD ARRAY WITH CELL()
+    // value = 0
+    // addToken (take player and set as value if available)
+    // getValue (????????)
     for (let i = 0; i < 9; i++) {
           board.push(Cell());
     }
 
+    // getBoard (????????)
     const getBoard = () => board;
 
+    // assign specific index in board as player with addToken
     const dropToken = (square, player) => {
         board[square].addToken(player);
     }
 
+    // create new array while maintaining board array
     const printBoard = () => {
         const boardWithCellValues = board.map((cell) => cell.getValue());
 
@@ -22,23 +30,30 @@ function Gameboard () {
 
     // RESET GAME FUNCTIONALITY
 
-    // resetBoard = () => {
-    //     for (let i=0; i<9; i++) {
-    //         board[i].addToken(0);
-    //     }
-    //     console.log(board)
-    // }
+
+
+    resetBoard = () => {
+        
+        board.splice(0, 9);
+
+        for (i=0; i<9; i++) {
+            board.push(Cell());
+        }
+
+        printBoard();
+    }
 
     return {getBoard, 
             dropToken, 
-            printBoard
-            //resetBoard
+            printBoard,
+            resetBoard
     }  
 }
 
 function Cell() {
     let value = 0;
 
+    // set value to player value
     const addToken = (player) => {
         if (value == 0) {
             value = player;
@@ -85,7 +100,6 @@ function GameController() {
     };
 
     const getActivePlayer = () => activePlayer;
-
  
     const printNewRound = () => {
          board.printBoard();
@@ -110,6 +124,7 @@ function GameController() {
         playRound,
         getActivePlayer,
         updateGameStatus,
+        switchPlayer,
         printBoard: board.printBoard,
         resetBoard: board.resetBoard
     };
@@ -162,16 +177,19 @@ function ScreenController() {
 
     gameBoard.addEventListener("click", clickHandler);
 
-    // RESET GAME FUNCTIONALITY
+    let resetButton = document.getElementById("reset");
 
-    // let resetButton = document.getElementById("reset");
+    const resetGame = () => {
 
-    // const resetGame = () => {
-    //     game.resetBoard();
-    //     updateScreen();
-    // }
+        if (game.getActivePlayer().token == 2) {
+            game.switchPlayer();
+        }
 
-    // resetButton.addEventListener("click", resetGame);
+        game.resetBoard();
+        updateScreen();
+    }
+
+    resetButton.addEventListener("click", resetGame);
 
     updateScreen();
 
