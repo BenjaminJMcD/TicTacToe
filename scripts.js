@@ -132,12 +132,22 @@ function GameController() {
 
         winningAxes.forEach((index) => {
             if (boardStatus[index[0]] === 1 && boardStatus[index[1]] === 1 && boardStatus[index[2]] === 1) {
-                console.log("PLAYER X WINS")
+                updateGameStatus("PLAYER X WINS!")
             }
             else if (boardStatus[index[0]] === 2 && boardStatus[index[1]] === 2 && boardStatus[index[2]] === 2) {
-                console.log("PLAYER O WINS")
+                updateGameStatus("PLAYER O WINS!")
             }
         })
+    }
+
+    const checkDraw = () => {
+        let boardStatus = board.printBoard();
+
+        function getSum(total, num) {
+            return total + num
+        }
+
+        return boardStatus.reduce(getSum, 0)
     }
 
     return {
@@ -146,6 +156,7 @@ function GameController() {
         updateGameStatus,
         switchPlayer,
         checkWin,
+        checkDraw,
         printBoard: board.printBoard,
         resetBoard: board.resetBoard
     };
@@ -191,6 +202,10 @@ function ScreenController() {
         }
         else {
             return
+        }
+
+        if (game.checkDraw() == 13) {
+            game.updateGameStatus("IT'S A DRAW")
         }
 
         updateScreen();
