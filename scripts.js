@@ -135,7 +135,7 @@ function GameController() {
             }
         })
     }
-
+    
     const clarifyWin = (square1, square2, square3) => {
         let winSquare = document.getElementsByClassName("gameSquare");
         for (i=0; i<9; i++) {
@@ -218,9 +218,8 @@ function ScreenController() {
             game.updateGameStatus("IT'S A DRAW")
         }
 
-        updateScreen();
         game.checkWin();
-        console.log(index[1])
+        updateScreen();
     }
 
     gameBoard.addEventListener("click", clickHandler);
