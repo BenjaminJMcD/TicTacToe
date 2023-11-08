@@ -140,15 +140,12 @@ function GameController() {
         let winSquare = document.getElementsByClassName("gameSquare");
         for (i=0; i<9; i++) {
             if (winSquare[i].dataset.square == square1) {
-                winSquare[i].classList.remove("gameSquare");
                 winSquare[i].classList.add("winSquare");
             }
             else if (winSquare[i].dataset.square == square2) {
-                winSquare[i].classList.remove("gameSquare");
                 winSquare[i].classList.add("winSquare");
             }
             else if (winSquare[i].dataset.square == square3) {
-                winSquare[i].classList.remove("gameSquare");
                 winSquare[i].classList.add("winSquare");
             }
         }
