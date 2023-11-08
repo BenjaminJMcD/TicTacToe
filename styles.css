@@ -1,17 +1,72 @@
 /* google font */
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Lato&family=Montserrat:wght@300&family=Orbitron&display=swap');
+
+
 
 body {
-    width: 100vw;
-    height:100vh;
+    font-family: 'Kaisei Opti', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Orbitron', sans-serif;
+    background-color: #FFFCF2;  
+}
+
+main {
+    height: 650px;
+    max-width: 960px;
+    margin:auto;
+    padding-top: 10px;
+}
+
+#gameStatus {
+    text-align: center;
+    font-size:25px;
 }
 
 #gameBoard {
     display:grid;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px;
-    width: 300px;
+    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 150px 150px 150px;
+    width: 450px;
+    margin:auto;
 }
 
 .gameSquare {
     border: 1px black solid;
+    font-size: 100px;
+    font-family: 'Kaisei Opti', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Orbitron', sans-serif; 
+    background-color: #CCC5B9;
+}
+
+.winSquare {
+    color: #CCC5B9;
+    background-color: #403d39;;
+    border: 2px black solid;
+}
+
+.resetDiv {
+    max-width: 960px;
+    text-align:center;
+    margin-top: 15px;
+}
+
+#reset {
+    font-family: 'Kaisei Opti', serif;
+    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Orbitron', sans-serif; 
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 5px;
+    width: 300px;
+    height: 60px;
+    background-color: #403d39;
+    color: #CCC5B9;
+}
+
+footer {
+    text-align:center;
 }
