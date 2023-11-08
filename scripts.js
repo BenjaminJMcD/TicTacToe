@@ -124,16 +124,31 @@ function GameController() {
 
         winningAxes.forEach((index) => {
             if (boardStatus[index[0]] === 1 && boardStatus[index[1]] === 1 && boardStatus[index[2]] === 1) {
-                console.log(index[0], index[1], index[2])
-                updateGameStatus("PLAYER X WINS!")
+                updateGameStatus("PLAYER X WINS !")
+                clarifyWin(index[0], index[1], index[2]);
                 board.endGame();
             }
             else if (boardStatus[index[0]] === 2 && boardStatus[index[1]] === 2 && boardStatus[index[2]] === 2) {
-                console.log(index[0], index[1], index[2])
-                updateGameStatus("PLAYER O WINS!")
+                updateGameStatus("PLAYER O WINS !")
+                clarifyWin(index[0], index[1], index[2]);
                 board.endGame();
             }
         })
+    }
+
+    const clarifyWin = (square1, square2, square3) => {
+        let winSquare = document.getElementsByClassName("gameSquare");
+        for (i=0; i<9; i++) {
+            if (winSquare[i].dataset.square == square1) {
+                winSquare[i].classList.add("winSquare")
+            }
+            else if (winSquare[i].dataset.square == square2) {
+                winSquare[i].classList.add("winSquare")
+            }
+            else if (winSquare[i].dataset.square == square3) {
+                winSquare[i].classList.add("winSquare")
+            }
+        }
     }
 
     const checkDraw = () => {
@@ -168,7 +183,6 @@ function ScreenController() {
     const updateScreen = () => {
         gameBoard.innerHTML = "";
         const board = game.printBoard();
-        console.log(board);
 
         for (i=0; i<board.length; i++) {
 
@@ -204,8 +218,9 @@ function ScreenController() {
             game.updateGameStatus("IT'S A DRAW")
         }
 
-        game.checkWin();
         updateScreen();
+        game.checkWin();
+        console.log(index[1])
     }
 
     gameBoard.addEventListener("click", clickHandler);

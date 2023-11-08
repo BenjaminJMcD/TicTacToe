@@ -41,6 +41,12 @@ main {
     background-color: #CCC5B9;
 }
 
+.winSquare {
+    color: #CCC5B9;
+    background-color: #403d39;;
+    border: 2px black solid;
+}
+
 .resetDiv {
     max-width: 960px;
     text-align:center;
