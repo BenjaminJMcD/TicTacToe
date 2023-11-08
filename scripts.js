@@ -2,37 +2,25 @@
 
 function Gameboard () {
 
-    // DECLARE BOARD ARRAY
     const board = [];
 
-    // INITIALIZE BOARD ARRAY WITH CELL()
-    // value = 0
-    // addToken (take player and set as value if available)
-    // getValue (????????)
     for (let i = 0; i < 9; i++) {
           board.push(Cell());
     }
 
-    // getBoard (????????)
     const getBoard = () => board;
 
-    // assign specific index in board as player with addToken
     const dropToken = (square, player) => {
         board[square].addToken(player);
     }
 
-    // create new array while maintaining board array
     const printBoard = () => {
         const boardWithCellValues = board.map((cell) => cell.getValue());
 
         return boardWithCellValues;
     }
 
-    // RESET GAME FUNCTIONALITY
-
-
-
-    resetBoard = () => {
+    const resetBoard = () => {
         
         board.splice(0, 9);
 
@@ -43,17 +31,23 @@ function Gameboard () {
         printBoard();
     }
 
+    const endGame = () => {
+        for (i=0; i<9; i++) {
+            board[i].addToken(3);
+        }
+    }
+
     return {getBoard, 
             dropToken, 
             printBoard,
-            resetBoard
+            resetBoard,
+            endGame
     }  
 }
 
 function Cell() {
     let value = 0;
 
-    // set value to player value
     const addToken = (player) => {
         if (value == 0) {
             value = player;
@@ -114,8 +108,6 @@ function GameController() {
 
     printNewRound();
 
-    // CHECK WIN FUNCTIONALITY
-
     const winningAxes = [
         [0, 1, 2],
         [3, 4, 5],
@@ -132,10 +124,14 @@ function GameController() {
 
         winningAxes.forEach((index) => {
             if (boardStatus[index[0]] === 1 && boardStatus[index[1]] === 1 && boardStatus[index[2]] === 1) {
+                console.log(index[0], index[1], index[2])
                 updateGameStatus("PLAYER X WINS!")
+                board.endGame();
             }
             else if (boardStatus[index[0]] === 2 && boardStatus[index[1]] === 2 && boardStatus[index[2]] === 2) {
+                console.log(index[0], index[1], index[2])
                 updateGameStatus("PLAYER O WINS!")
+                board.endGame();
             }
         })
     }
@@ -190,7 +186,7 @@ function ScreenController() {
             }
          gameBoard.appendChild(cellButton);
        }
-  }
+    }
 
     const clickHandler = (e) => {
 
@@ -208,8 +204,8 @@ function ScreenController() {
             game.updateGameStatus("IT'S A DRAW")
         }
 
-        updateScreen();
         game.checkWin();
+        updateScreen();
     }
 
     gameBoard.addEventListener("click", clickHandler);
