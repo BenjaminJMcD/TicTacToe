@@ -7,26 +7,26 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Tic Tac Toe</h1>
-        <!-- dropdown for difficulty -->
-    </header>
     <main>
-        <!-- module for winner -->
+        <h3 id="gameStatus">X's Turn</h3>
         <div id="gameBoard">
-            <div class="gameSquare" id="square1"></div>
-            <div class="gameSquare" id="square2"></div>
-            <div class="gameSquare" id="square3"></div>
-            <div class="gameSquare" id="square4"></div>
-            <div class="gameSquare" id="square5"></div>
-            <div class="gameSquare" id="square6"></div>
-            <div class="gameSquare" id="square7"></div>
-            <div class="gameSquare" id="square8"></div>
-            <div class="gameSquare" id="square9"></div>
+            <button class="gameSquare" data-square="0" ></button>
+            <button class="gameSquare" data-square="1" ></button>
+            <button class="gameSquare" data-square="2" ></button>
+            <button class="gameSquare" data-square="3" ></button>
+            <button class="gameSquare" data-square="4" ></button>
+            <button class="gameSquare" data-square="5" ></button>
+            <button class="gameSquare" data-square="6" ></button>
+            <button class="gameSquare" data-square="7" ></button>
+            <button class="gameSquare" data-square="8" ></button>
+        </div>
+        <div class="resetDiv">
+            <button id="reset">Reset Board</button>
         </div>
     </main>
     <footer>
-        <h3>Created By <a href="github.com/BenjaminJMcD">BenjaminJMcD</a></h3>
+        <h3>Created By <a href="https://github.com/BenjaminJMcD">BenjaminJMcD</a></h3>
+        <script src="scripts.js"></script>
     </footer>
 </body>
 </html>
