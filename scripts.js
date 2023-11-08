@@ -124,12 +124,12 @@ function GameController() {
 
         winningAxes.forEach((index) => {
             if (boardStatus[index[0]] === 1 && boardStatus[index[1]] === 1 && boardStatus[index[2]] === 1) {
-                updateGameStatus("PLAYER X WINS !")
+                updateGameStatus("PLAYER X WINS !");
                 clarifyWin(index[0], index[1], index[2]);
                 board.endGame();
             }
             else if (boardStatus[index[0]] === 2 && boardStatus[index[1]] === 2 && boardStatus[index[2]] === 2) {
-                updateGameStatus("PLAYER O WINS !")
+                updateGameStatus("PLAYER O WINS !");
                 clarifyWin(index[0], index[1], index[2]);
                 board.endGame();
             }
@@ -138,9 +138,9 @@ function GameController() {
 
     const clarifyWin = (square1, square2, square3) => {
         let winSquare = document.getElementsByClassName("gameSquare");
-        for (i=0; i<9; i++) {
+        for (let i=0; i<9; i++) {
             if (winSquare[i].dataset.square == square1) {
-                winSquare[i].classList.add("winSquare")
+                winSquare[i].classList.add("winSquare");
             }
             else if (winSquare[i].dataset.square == square2) {
                 winSquare[i].classList.add("winSquare")
