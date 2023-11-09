@@ -19,7 +19,13 @@
     }
     .gameSquare {
         color: black;
+        font-size: 50px;
     }
+
+    .winSquare {
+        color: #CCC5B9;
+    }
+
     .resetDiv {
         width: 360px;
     }
