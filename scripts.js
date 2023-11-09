@@ -220,7 +220,6 @@ function ScreenController() {
 
         updateScreen();
         game.checkWin();
-        console.log(index[1])
     }
 
     gameBoard.addEventListener("click", clickHandler);
