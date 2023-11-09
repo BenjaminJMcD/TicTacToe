@@ -1,34 +1,6 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&family=Lato&family=Montserrat:wght@300&family=Orbitron&display=swap');
 
-@media screen and (max-width: 970px) {
-
-    main {
-        height: 800px;
-        width: 375px;
-        margin: 0;
-        padding-top: 10px;
-    }
-    #gameStatus {
-        font-size: 20px;
-    }
-    #gameBoard {
-        grid-template-columns: 120px 120px 120px;
-        grid-template-rows: 120px 120px 120px;
-        width: 360px;
-        height: 360px;
-        margin: 0px;
-    }
-    .gameSquare {
-        color: black;
-    }
-    .resetDiv {
-        width: 375px;
-    }
-    footer {
-        width: 375px;
-    }
-}
 
 body {
     font-family: 'Kaisei Opti', serif;

@@ -1,0 +1,29 @@
+@media screen and (max-width: 970px) {
+
+    main {
+        height: 550px;
+        width: 375px;
+        margin: 0;
+        padding-top: 10px;
+    }
+    #gameStatus {
+        font-size: 20px;
+    }
+    #gameBoard {
+        grid-template-columns: 120px 120px 120px;
+        grid-template-rows: 120px 120px 120px;
+        width: 360px;
+        height: 360px;
+        margin: 0px;
+    }
+    .gameSquare {
+        color: black;
+    }
+    .resetDiv {
+        width: 370px;
+    }
+    footer {
+        width: 370px;
+        margin:0;
+    }
+}
