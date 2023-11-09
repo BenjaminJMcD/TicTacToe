@@ -135,7 +135,7 @@ function GameController() {
             }
         })
     }
-
+    
     const clarifyWin = (square1, square2, square3) => {
         let winSquare = document.getElementsByClassName("gameSquare");
         for (let i=0; i<9; i++) {
@@ -143,10 +143,10 @@ function GameController() {
                 winSquare[i].classList.add("winSquare");
             }
             else if (winSquare[i].dataset.square == square2) {
-                winSquare[i].classList.add("winSquare")
+                winSquare[i].classList.add("winSquare");
             }
             else if (winSquare[i].dataset.square == square3) {
-                winSquare[i].classList.add("winSquare")
+                winSquare[i].classList.add("winSquare");
             }
         }
     }
@@ -218,8 +218,8 @@ function ScreenController() {
             game.updateGameStatus("IT'S A DRAW")
         }
 
-        updateScreen();
         game.checkWin();
+        updateScreen();
     }
 
     gameBoard.addEventListener("click", clickHandler);
