@@ -218,8 +218,8 @@ function ScreenController() {
             game.updateGameStatus("IT'S A DRAW")
         }
 
-        game.checkWin();
         updateScreen();
+        game.checkWin();
     }
 
     gameBoard.addEventListener("click", clickHandler);
